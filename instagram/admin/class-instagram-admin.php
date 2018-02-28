@@ -97,6 +97,7 @@ class Instagram_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/instagram-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'slick' , plugin_dir_url( __FILE__ ) . 'js/slick.min.js', array( 'jquery' ), false );
 
 	}
 
@@ -118,80 +119,124 @@ class Instagram_Admin {
 			function add_plugin_page(){
 				add_menu_page( 'Instagram posts settings', 'Instagram posts', 'manage_options', 'instagram-options', 'options_page_output', plugin_dir_url( __FILE__ ).'/icon.png', 4 );
 			}
+			add_action('admin_init', 'plugin_settings');
+			function plugin_settings(){
+				register_setting( 'option_group', 'instagram');
+			}
 
 			function options_page_output(){
 				?>
 				<div class="container">
 		      <div class="instagram">
 		        <div class="instagram__logo"></div>
-		        <form action="options.php" method="POST"><table class="form-table">
+		        <form id="instagram-form" action="options.php" method="POST">
 		        	<?php
-		        		settings_fields( 'option_group' );     // скрытые защитные поля
-		        		do_settings_sections( 'instagram_options' ); // секции с настройками (опциями). У нас она всего одна 'section_id'
-		        	?>
-		        	<label for="submit" class="submit">
-		        	<?php
-		        		submit_button(' ','','submit', false);
+		        		settings_fields( 'option_group' );
 		        		$data = get_instagram(get_option('instagram')['user'], get_option('instagram')['imgs'], 3);
 		        	?>
-		        	</label>
+		        	<div class="text-center"><i class="user"></i>
+		        	  <input type="text" id="instagram_user" name="instagram[user]" value="<?php echo get_option('instagram')['user']; ?>">
+		        	</div>
+		        	<div class="instagram__settings">
+		        	  <p class="instagram__title">Настройки</p>
+		        	  <div class="row">
+		        	    <label for="instagram_img">
+		        	    	<p>Колличество постов</p>
+		        	    	<select name="instagram[imgs]" id="instagram_img">
+		        	    		<?php for ($i=1; $i < 13 ; $i++) { ?>
+		        	    			<option value="<?php echo $i; ?>" <?php echo $selected = get_option('instagram')['imgs'] == $i ? 'selected' : '' ?>><?php echo $i; ?></option>
+		        	    		<?php } ?>
+		        	    	</select>
+		        	    </label>
+		        	    <label for="instagram_position">
+		        	    	<p>Способ отображения</p>
+		        	      <select id="instagram_position" name="instagram[settings][position]">
+		        	        <option value="mini" <?php echo $selected = get_option('instagram')['settings']['position'] == 'mini' ? 'selected' : '' ?>>Маленькие фото</option>
+		        	        <option value="big" <?php echo $selected = get_option('instagram')['settings']['position'] == 'big' ? 'selected' : '' ?>>Большие фото</option>
+		        	        <!-- <option value="slider" <?php echo $selected = get_option('instagram')['settings']['position'] == 'slider' ? 'selected' : '' ?>>Слайдер</option> -->
+		        	      </select>
+		        	    </label>
+		        	    <label for="instagram_thumb">
+		        	    	<p>Информация о акаунте</p>
+		        	    	<input type="hidden" name="instagram[settings][thumb]" value="0">
+		        	    	<input id="instagram_thumb" type="checkbox" name="instagram[settings][thumb]" value="1" <?php echo $selected = get_option('instagram')['settings']['thumb'] == '1' ? 'checked' : '' ?>>
+		        	    	<span>Отображать</span>
+		        	    </label>
+		        	  </div>
+		        	  <label class="submit" for="submit">
+		        	    <button class="button button-primary" type="submit" name="submit" id="submit">Сохранить</button>
+		        	  </label>
+		        	</div>
 		        </form>
-		        <?php if ($data) { ?>
-		        <div class="instagram__box">
-		        	<div class="instagram__thumb"><a href="<?php echo $data['user']['link']; ?>" target="_blank"><img src="<?php echo $data['user']['thumb']; ?>" alt="">
-		        		<p class="name">@<?php echo $data['user']['name']; ?></p>
-		        	  <p>Followers: <span><?php echo $data['user']['followers']; ?></span></p></a>
+		        <div class="instagram__ajax">
+		        	<?php if ($data) { ?>
+		        	<div class="instagram__box">
+		        		<div class="instagram__thumb" <?php echo $selected = get_option('instagram')['settings']['thumb'] != '1' ? 'style="display:none;"' : ''; ?>>
+		        			<a href="<?php echo $data['user']['link']; ?>" target="_blank">
+		        				<img src="<?php echo $data['user']['thumb']; ?>" alt="">
+				        		<p class="name">@<?php echo $data['user']['name']; ?></p>
+				        	  <p>Followers: <span><?php echo $data['user']['followers']; ?></span></p>
+				        	</a>
+		        		</div>
+		        		<div class="instagram__plugin <?php echo get_option('instagram')['settings']['position']; ?>">
+		        			<div class="row">
+			        			<?php foreach ($data['posts'] as $post) { ?>
+			        				<a href="<?php echo $post['link']; ?>" target="_blank" title="<?php echo $post['title']; ?>">
+			        					<div class="img">
+			        						<img src="<?php echo $post['img']; ?>" alt="">
+			        						<span class="instagram__plugin--likes"><?php echo $post['likes']; ?></span>
+			        						<span class="instagram__plugin--comments"><?php echo $post['comments']; ?></span>
+							        	</div>
+							        </a>
+			        			<?php } ?>
+			        		</div>
+		        		</div>
 		        	</div>
-		        	<div class="instagram__plugin">
-		        		<?php foreach ($data['posts'] as $post) { ?>
-		        			<a href="<?php echo $post['link']; ?>" target="_blank" title="<?php echo $post['title']; ?>"><div class="img">
-		        					<img src="<?php echo $post['img']; ?>" alt="">
-		        					<span class="instagram__plugin--likes"><?php echo $post['likes']; ?></span><span class="instagram__plugin--comments"><?php echo $post['comments']; ?></span>
-		        					        	</div></a>
-		        		<?php } ?>
-		        	</div>
+		        	<?php } ?>
 		        </div>
-		        <?php } ?>
 		      </div>
 		    </div>
 				<?php
 			}
-			
-			add_action('admin_init', 'plugin_settings');
-			function plugin_settings(){
-				register_setting( 'option_group', 'instagram', 'sanitize_callback' );
-				add_settings_section( 'section_id', '', '', 'instagram_options' ); 
-				add_settings_field('user', '<i class="user"></i>', 'user_field', 'instagram_options', 'section_id' );
-				add_settings_field('imgs', 'Колличество постов', 'user_imgs', 'instagram_options', 'section_id' );
-			}
 
-			function user_field(){
-				$val = get_option('instagram');
-				$val = $val ? $val['user'] : null;
-				?>
-				<input type="text" id="instagram_user" name="instagram[user]" value="<?php echo esc_attr( $val ) ?>" placeholder="User name" />
-				<?php
-			}
-
-			function user_imgs(){
-				$val = get_option('instagram');
-				$val = $val ? $val['imgs'] : '1';
-				?>
-				<input type="number" id="instagram_img" min="1" max="12" name="instagram[imgs]" value="<?php echo $val ?>" />
-				<?php
-			}
-
-			function sanitize_callback( $options ){ 
-				// очищаем
-				foreach( $options as $name => & $val ){
-					if( $name == 'user' )
-						$val = strip_tags( $val );
-
-					if( $name == 'imgs' )
-						$val = intval( $val );
-				}
-
-				return $options;
+			add_action('wp_ajax_instagram', 'instagram_callback');
+			function instagram_callback() {
+				$data = get_instagram($_POST['user'], $_POST['imgs'], 3); ?>
+				<div class="instagram__ajax">
+					<?php if ($data && $data['user']['status'] != 'true') { ?>
+					<div class="instagram__box">
+						<div class="instagram__thumb" <?php echo $selected = $_POST['thumb'] != '1' ? 'style="display:none;"' : ''; ?>>
+							<a href="<?php echo $data['user']['link']; ?>" target="_blank">
+								<img src="<?php echo $data['user']['thumb']; ?>" alt="">
+		        		<p class="name">@<?php echo $data['user']['name']; ?></p>
+		        	  <p>Followers: <span><?php echo $data['user']['followers']; ?></span></p>
+		        	</a>
+						</div>
+						<div class="instagram__plugin <?php echo $_POST['position']; ?>">
+							<div class="row">
+								<?php foreach ($data['posts'] as $post) { ?>
+									<a href="<?php echo $post['link']; ?>" target="_blank" title="<?php echo $post['title']; ?>">
+										<div class="img">
+											<img src="<?php echo $post['img']; ?>" alt="">
+											<span class="instagram__plugin--likes"><?php echo $post['likes']; ?></span>
+											<span class="instagram__plugin--comments"><?php echo $post['comments']; ?></span>
+										</div>
+									</a>
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+					<?php } elseif ($data['user']['status'] == 'true') { ?>
+						<div class="instagram__box disabled">
+							<p class="error">У пользователя приватная страница.</p>
+						</div>
+					<?php } else {?>
+						<div class="instagram__box disabled">
+							<p class="error">Пользователь не найден.</p>
+						</div>
+					<?php } ?>
+				</div>
+				<?php wp_die();
 			}
 
 	}

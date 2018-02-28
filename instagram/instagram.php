@@ -78,20 +78,24 @@ function run_instagram() {
 	$plugin->run();
 
 	//main function
+	function isJSON($string) {
+	    return ((is_string($string) && (is_object(json_decode($string)) || is_array(json_decode($string))))) ? true : false;
+	}
+
 	function get_instagram($user, $imgs = 4, $size = 0){
-		if ($user) {
-			$data = file_get_contents("https://www.instagram.com/".$user."/?__a=1");
+		$data = file_get_contents("https://www.instagram.com/".$user."/?__a=1");
+		if(isJSON($data)) {
 			$data = json_decode($data, true);
 			//main array
 			$instagram = array(
 				'user'	=> [],
 				'posts'	=> []
-			);		
-
+			);
 
 			$args = array(
+					'status' => $data['user']['is_private'],
 					'id'	=> $data['user']['id'],
-					'name'	=> $data['user']['full_name'],
+					'name'	=> $data['user']['full_name'] != '' ? $data['user']['full_name'] : $user,
 					'thumb'	=> $data['user']['profile_pic_url_hd'],
 					'link' => 'https://www.instagram.com/'.$user.'/',
 					'bio'	=> $data['user']['biography'],
@@ -122,8 +126,9 @@ function run_instagram() {
 			}
 
 			return $instagram;
+		} else {
+			return false;
 		}
-		return false;
 	}
 }
 run_instagram();
