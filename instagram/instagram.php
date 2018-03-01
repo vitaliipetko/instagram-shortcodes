@@ -56,8 +56,7 @@ function deactivate_instagram() {
 }
 
 function uninstal_instagram() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-instagram-uninstal.php';
-	Instagram_Uninstal::uninstal();
+	instagram_delete_table();
 }
 
 register_activation_hook( __FILE__, 'activate_instagram' );

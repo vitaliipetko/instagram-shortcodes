@@ -26,14 +26,8 @@
 	function instagram_delete_table() {
 
 		global $wpdb;
-		// require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
 		$table_name = $wpdb->get_blog_prefix() . 'instagram';
-		// $charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset} COLLATE {$wpdb->collate}";
-
-		$sql = "DROP TABLE {$table_name}";
-
-		dbDelta($sql);
+		$wpdb->query("DROP TABLE $table_name");
 	}
 
 	function shortcodes() {
