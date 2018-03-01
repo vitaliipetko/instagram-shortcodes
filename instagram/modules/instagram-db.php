@@ -31,7 +31,7 @@
 		$table_name = $wpdb->get_blog_prefix() . 'instagram';
 		// $charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset} COLLATE {$wpdb->collate}";
 
-		$sql = "DELETE TABLE {$table_name}";
+		$sql = "DROP TABLE {$table_name}";
 
 		dbDelta($sql);
 	}

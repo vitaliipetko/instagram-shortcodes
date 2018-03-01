@@ -55,8 +55,14 @@ function deactivate_instagram() {
 	Instagram_Deactivator::deactivate();
 }
 
+function uninstal_instagram() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-instagram-uninstal.php';
+	Instagram_Uninstal::uninstal();
+}
+
 register_activation_hook( __FILE__, 'activate_instagram' );
 register_deactivation_hook( __FILE__, 'deactivate_instagram' );
+register_uninstall_hook( __FILE__, 'uninstal_instagram' );
 
 /**
  * The core plugin class that is used to define internationalization,
