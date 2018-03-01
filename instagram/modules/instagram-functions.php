@@ -10,4 +10,17 @@
 		add_menu_page( 'Instagram posts settings', 'Instagram posts', 'manage_options', 'instagram-options', 'options_page_output', plugin_dir_url( __FILE__ ) .'icon.png', 4 );
 	}
 
+	// Регистрация виджета консоли
+	add_action('wp_dashboard_setup', 'add_dashboard_widgets' );
+
+	// Выводит контент
+	function dashboard_widget_function( $post, $callback_args ) {
+		echo "Всем привет! Это мой первый виджет!";
+	}
+
+	// Используется в хуке
+	function add_dashboard_widgets() {
+		wp_add_dashboard_widget('dashboard_widget', 'Метабокс в консоли', 'dashboard_widget_function');
+	}
+
 ?>

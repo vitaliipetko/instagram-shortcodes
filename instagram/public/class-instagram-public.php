@@ -96,7 +96,15 @@ class Instagram_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/instagram-public.js', array( 'jquery' ), $this->version, false );
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/instagram-public.js', array( 'jquery' ), $this->version, false );
+
+	}
+
+	public function load_modules() {
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-core.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-db.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-shortcode.php';
 
 	}
 

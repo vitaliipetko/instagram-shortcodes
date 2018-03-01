@@ -29,14 +29,6 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 	 $(document).ready(function() {
-	 		$('.slider .row').slick({
-				infinite: true,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				centerMode: true,
-				dots: false,
-				arrows: false
-	 		});
 
 	 		$('#instagram-form').submit(function(event) {
 	 			if ($('#submit').prop('disabled')) {

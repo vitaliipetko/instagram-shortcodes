@@ -46,7 +46,7 @@
 	        			$shortcodes = shortcodes();
 	        			foreach ($shortcodes as $result) {
 	        				$code = shortcode($result['ID']);
-	        				echo "<tr><td>$code[user_name]</td><td class='code'>[instagram id=$code[ID]]</td><td><a href='admin.php?page=instagram-options&fun=edit&id=$code[ID]'>Редактировать</a><td><a href='admin.php?page=instagram-options&fun=delete&id=$code[ID]' class='delete'>Удалить</a></td></tr>";
+	        				echo "<tr><td>$code[user_name]</td><td class='code'>[instagram id='$code[ID]']</td><td><a href='admin.php?page=instagram-options&fun=edit&id=$code[ID]'>Редактировать</a><td><a href='admin.php?page=instagram-options&fun=delete&id=$code[ID]' class='delete'>Удалить</a></td></tr>";
 	        			}
 	        		?>
 	        	</tbody>

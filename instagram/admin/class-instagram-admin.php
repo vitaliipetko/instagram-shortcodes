@@ -108,6 +108,7 @@ class Instagram_Admin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-ajax.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-admin-page.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-db.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-widget.php';
 
 	}
 

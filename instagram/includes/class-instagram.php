@@ -170,6 +170,7 @@ class Instagram {
 	private function define_public_hooks() {
 
 		$plugin_public = new Instagram_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public->load_modules();
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
