@@ -37,6 +37,8 @@ class Instagram_Activator {
 			);
 			update_option('instagram', $args);
 		}
+
+		instagram_create_table();
 	}
 
 }

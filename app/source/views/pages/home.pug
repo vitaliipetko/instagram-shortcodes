@@ -6,49 +6,58 @@ append config
 block content
 	.container
 		.instagram
+			p.false Данные обновлены
 			.instagram__logo
-			form(action="options.php" method="POST")
-				.text-center
-					i.user
-					input(type="text" id="instagram_user" name="instagram[user]" value="imdubhead")
-					button(type="button" name="search" id="search" value="")
-				.instagram__settings
-					p.instagram__title Настройки
-					.row
-						label(for="instagram_img") Колличество постов
-							select(name="instagram[imgs]")
-								option(value="1") 1
-								option(value="2") 2
-								option(value="3") 3
-								option(value="4") 4
-								option(value="5") 5
-								option(value="6") 6
-								option(value="7") 7
-								option(value="8") 8
-								option(value="9") 9
-								option(value="10") 10
-								option(value="11") 11
-								option(value="12") 12		
-						label(for="vision") Способ отображения
-							select(name="instagram[settings][position]")
-								option(value="1") Вертикальный
-								option(value="2") Горизонтальный
-								option(value="3") Слайдер
-					label(class="submit" for="submit")
-						button(type="submit" name="submit" id="submit" class="button button-primary") Сохранить
-			.instagram__box
-				.instagram__thumb
-					img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
-					p.name Dub Head
-					p Followers: 
-						span 1300
-				.instagram__plugin.slider
-					.row
-						.img
-							img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
-						.img
-							img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
-						.img
-							img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
-						.img
-							img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
+			.instagram__shortcodes
+				table
+					tr
+						td 1
+						td test
+					tr
+						td 2
+						td test2
+			//- form(action="options.php" method="POST")
+			//- 	.text-center
+			//- 		i.user
+			//- 		input(type="text" id="instagram_user" name="instagram[user]" value="imdubhead")
+			//- 		button(type="button" name="search" id="search" value="")
+			//- 	.instagram__settings
+			//- 		p.instagram__title Настройки
+			//- 		.row
+			//- 			label(for="instagram_img") Колличество постов
+			//- 				select(name="instagram[imgs]")
+			//- 					option(value="1") 1
+			//- 					option(value="2") 2
+			//- 					option(value="3") 3
+			//- 					option(value="4") 4
+			//- 					option(value="5") 5
+			//- 					option(value="6") 6
+			//- 					option(value="7") 7
+			//- 					option(value="8") 8
+			//- 					option(value="9") 9
+			//- 					option(value="10") 10
+			//- 					option(value="11") 11
+			//- 					option(value="12") 12		
+			//- 			label(for="vision") Способ отображения
+			//- 				select(name="instagram[settings][position]")
+			//- 					option(value="1") Вертикальный
+			//- 					option(value="2") Горизонтальный
+			//- 					option(value="3") Слайдер
+			//- 		label(class="submit" for="submit")
+			//- 			button(type="submit" name="submit" id="submit" class="button button-primary") Сохранить
+			//- .instagram__box
+			//- 	.instagram__thumb
+			//- 		img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
+			//- 		p.name Dub Head
+			//- 		p Followers: 
+			//- 			span 1300
+			//- 	.instagram__plugin.slider
+			//- 		.row
+			//- 			.img
+			//- 				img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
+			//- 			.img
+			//- 				img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
+			//- 			.img
+			//- 				img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")
+			//- 			.img
+			//- 				img(src="https://instagram.fiev10-1.fna.fbcdn.net/vp/8a37212e4f41b6c84e119ae7aa3586f0/5B0F1DA8/t51.2885-19/s320x320/16122944_371991606506772_2495114787654991872_a.jpg", alt="")

@@ -44,7 +44,64 @@
 	 			}
 	 		});
 
+	 		function update_item() {
+	 			var data = $('.instagram-update').serialize();
+	 			$.ajax({
+	 				url: 'admin.php',
+	 				type: 'GET',
+	 				data: data,
+	 			})
+	 			.done(function() {
+	 				console.log("success");
+	 			})
+	 			.fail(function() {
+	 				console.log("error");
+	 			})
+	 			.always(function() {
+	 				console.log("complete");
+					window.location.href = "admin.php?page=instagram-options&status=true";
+	 			});	 			
+	 		}
+
+	 		function delete_item(data) {
+	 			$.ajax({
+	 				url: 'admin.php',
+	 				type: 'GET',
+	 				data: data,
+	 			})
+	 			.done(function() {
+	 				console.log("success");
+	 			})
+	 			.fail(function() {
+	 				console.log("error");
+	 			})
+	 			.always(function() {
+	 				console.log(data);
+					window.location.href = "admin.php?page=instagram-options&status=true";
+	 			});
+	 		}
+
+	 		function add_item() {
+	 			var data = $('.instagram-add').serialize();
+	 			$.ajax({
+	 				url: 'admin.php',
+	 				type: 'GET',
+	 				data: data,
+	 			})
+	 			.done(function() {
+	 				console.log("success");
+	 			})
+	 			.fail(function() {
+	 				console.log("error");
+	 			})
+	 			.always(function() {
+	 				console.log(data);
+					window.location.href = "admin.php?page=instagram-options&status=true";
+	 			});	 			
+	 		}
+
 	 		function loading() {
+	 			$('#submit').prop('disabled', true);
 	 			$('.instagram__ajax').css('opacity', '0.3');
 	 			var thumb = '';
 	 			if ($('#instagram_thumb').prop('checked')) {
@@ -79,6 +136,24 @@
 		 			}
 	 			);
 	 		};
+
+	 		$('.instagram-update').submit(function(event) {
+	 			event.preventDefault();
+	 			update_item();
+	 		});
+
+	 		$('.instagram-add').submit(function(event) {
+	 			event.preventDefault();
+	 			add_item();
+	 		});
+
+	 		$('.delete').click(function(event) {
+	 			event.preventDefault();
+	 			var data = $(this).attr('href');
+
+	 			data = data.replace('admin.php?', '');
+	 			delete_item(data);
+	 		});
 
 	 		$('#search').click(function(event) {
 	 			loading();

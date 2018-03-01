@@ -29,4 +29,4 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
-	update_option('instagram', []);
+	instagram_delete_table();

@@ -1,5 +1,24 @@
-// body
-// 	background: rgba(#000,.6)
+.container
+	max-width: 768px
+	margin: 0 auto
+	position: relative
+.text-center
+	text-align: center
+.row
+	+clearfix()
+.true,.false
+		margin-top: 20px
+		margin-bottom: -10px
+		margin-right: 20px
+		display: inline-block
+		padding: 5px 15px
+		font-size: 12px
+.true
+	color: green
+	border: 1px solid green
+.false
+	color: red
+	border: 1px solid red
 .instagram 
 	margin: 30px
 	margin-left: 0px
@@ -8,6 +27,66 @@
 	box-shadow: 0px 5px 10px rgba(0,0,0,0.2)
 	*
 		box-sizing: border-box
+		outline: none
+	a
+		text-decoration: none
+	.first
+		margin-top: 30px
+		text-align: center
+		font-weight: 700
+		font-size: 16px
+		p
+			margin: 0
+			padding-bottom: 20px
+		a
+			display: inline-block
+			width: 60px
+			height: 60px
+			border-radius: 50%
+			background: rgb(249,215,3)
+			background: linear-gradient(45deg, rgba(249,215,3,1) 16%,rgba(153,52,195,1) 100%)
+			box-shadow: 0px 5px 10px rgba(0,0,0,0.2)
+			position: relative
+			&:after
+				content: '+'
+				color: #fff
+				font-size: 40px
+				font-weight: 700
+				position: absolute
+				top: 41%
+				left: 50%
+				+translate(-50%,-50%)
+	&__shortcodes
+		padding-top: 30px
+		table
+			width: 100%
+			position: relative
+			&:after
+				content: ''
+				display: block
+				height: 1px
+				top: 30px
+				p5
+				position: absolute
+				width: 100%
+				background: rgb(249,215,3)
+				background: linear-gradient(45deg, rgba(249,215,3,1) 16%,rgba(153,52,195,1) 100%)
+			thead
+				tr
+					td
+						font-size: 16px
+						font-weight: 700
+						padding: 5px
+						a
+							text-decoration: none
+			tbody
+				tr
+					td
+						padding: 5px
+						font-size: 16px
+					.code
+						cursor: pointer
+			thead
 	&__settings
 		margin-top: 30px
 		border: 1px solid rgba(#000,.2)
