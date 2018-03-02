@@ -1,4 +1,21 @@
 <?php
+	
+	/**
+	 * Shortcode module.
+	 *
+	 * @link       vitaliipetko.info
+	 * @since      1.0.1
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 */
+
+	/**
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 * @author     Vitalii Petko <vitaliypetko@gmail.com>
+	 */
 
 	function instagram_shortcode_func( $atts ) {
 			$user = shortcode($atts['id']);

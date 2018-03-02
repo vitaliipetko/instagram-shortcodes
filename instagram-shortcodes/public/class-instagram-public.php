@@ -1,31 +1,31 @@
 <?php
 
 /**
- * The admin-specific functionality of the plugin.
+ * The public-facing functionality of the plugin.
  *
  * @link       vitaliipetko.info
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Instagram
- * @subpackage Instagram/admin
+ * @subpackage Instagram/public
  */
 
 /**
- * The admin-specific functionality of the plugin.
+ * The public-facing functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
+ * enqueue the public-facing stylesheet and JavaScript.
  *
  * @package    Instagram
- * @subpackage Instagram/admin
+ * @subpackage Instagram/public
  * @author     Vitalii Petko <vitaliypetko@gmail.com>
  */
-class Instagram_Admin {
+class Instagram_Public {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Instagram_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,8 +43,8 @@ class Instagram_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
+	 * @since    1.0.1
+	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
@@ -55,9 +55,9 @@ class Instagram_Admin {
 	}
 
 	/**
-	 * Register the stylesheets for the admin area.
+	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function enqueue_styles() {
 
@@ -73,14 +73,14 @@ class Instagram_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/instagram-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/instagram-public.css', array(), $this->version, 'all' );
 
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
+	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function enqueue_scripts() {
 
@@ -96,19 +96,15 @@ class Instagram_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/instagram-admin.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( 'slick' , plugin_dir_url( __FILE__ ) . 'js/slick.min.js', array( 'jquery' ), false );
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/instagram-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 
 	public function load_modules() {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-core.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-functions.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-ajax.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-admin-page.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-db.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-widget.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/instagram-shortcode.php';
 
 	}
 

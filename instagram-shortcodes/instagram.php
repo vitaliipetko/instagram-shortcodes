@@ -1,22 +1,15 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
  * @link              vitaliipetko.info
- * @since             1.0.0
+ * @since             1.0.1 
  * @package           Instagram
  *
  * @wordpress-plugin
- * Plugin Name:       Instagram posts
+ * Plugin Name:       Instagram Shortcodes
  * Plugin URI:        vitaliipetko.info
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Plugin for displaying the latest posts from Instagram
+ * Version:           1.0.1 beta
  * Author:            Vitalii Petko
  * Author URI:        vitaliipetko.info
  * License:           GPL-2.0+
@@ -25,17 +18,16 @@
  * Domain Path:       /languages
  */
 
-// If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Start at version 1.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'PLUGIN_NAME_VERSION', '1.0.1' );
 
 /**
  * The code that runs during plugin activation.
@@ -76,7 +68,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-instagram.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    1.0.1
  */
 function run_instagram() {
 	$plugin = new Instagram();

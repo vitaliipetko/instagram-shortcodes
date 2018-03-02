@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       vitaliipetko.info
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Instagram
  * @subpackage Instagram/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      1.0.1
  * @package    Instagram
  * @subpackage Instagram/includes
  * @author     Vitalii Petko <vitaliypetko@gmail.com>
@@ -33,7 +33,7 @@ class Instagram {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   protected
 	 * @var      Instagram_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -42,7 +42,7 @@ class Instagram {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -51,7 +51,7 @@ class Instagram {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -64,13 +64,13 @@ class Instagram {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function __construct() {
 		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
 			$this->version = PLUGIN_NAME_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.0.1';
 		}
 		$this->plugin_name = 'instagram';
 
@@ -94,7 +94,7 @@ class Instagram {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -132,7 +132,7 @@ class Instagram {
 	 * Uses the Instagram_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -147,7 +147,7 @@ class Instagram {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -164,7 +164,7 @@ class Instagram {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -180,7 +180,7 @@ class Instagram {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function run() {
 		$this->loader->run();
@@ -190,7 +190,7 @@ class Instagram {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     1.0.1
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -200,7 +200,7 @@ class Instagram {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     1.0.1
 	 * @return    Instagram_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -210,7 +210,7 @@ class Instagram {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     1.0.1
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

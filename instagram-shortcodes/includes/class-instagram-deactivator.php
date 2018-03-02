@@ -4,7 +4,7 @@
  * Fired during plugin deactivation
  *
  * @link       vitaliipetko.info
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Instagram
  * @subpackage Instagram/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.0
+ * @since      1.0.1
  * @package    Instagram
  * @subpackage Instagram/includes
  * @author     Vitalii Petko <vitaliypetko@gmail.com>
@@ -27,7 +27,7 @@ class Instagram_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public static function deactivate() {
 		

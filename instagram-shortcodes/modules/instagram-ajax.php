@@ -1,4 +1,21 @@
 <?php
+	
+	/**
+	 * Ajax module.
+	 *
+	 * @link       vitaliipetko.info
+	 * @since      1.0.1
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 */
+
+	/**
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 * @author     Vitalii Petko <vitaliypetko@gmail.com>
+	 */
 
 	add_action('wp_ajax_instagram', 'instagram_callback');
 	function instagram_callback() {

@@ -1,4 +1,21 @@
 <?php
+	
+	/**
+	 * Functions module.
+	 *
+	 * @link       vitaliipetko.info
+	 * @since      1.0.1
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 */
+
+	/**
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 * @author     Vitalii Petko <vitaliypetko@gmail.com>
+	 */
 
 	add_action('admin_init', 'plugin_settings');
 	function plugin_settings(){

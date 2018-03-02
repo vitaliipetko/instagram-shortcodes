@@ -1,5 +1,22 @@
 <?php
-	
+		
+		/**
+		 * Admin page module.
+		 *
+		 * @link       vitaliipetko.info
+		 * @since      1.0.1
+		 *
+		 * @package    Instagram
+		 * @subpackage Instagram/module
+		 */
+
+		/**
+		 *
+		 * @package    Instagram
+		 * @subpackage Instagram/module
+		 * @author     Vitalii Petko <vitaliypetko@gmail.com>
+		 */
+
 		function options_page_output(){ ?>
 			<div class="container">
 				<div class="text-center">

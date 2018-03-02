@@ -1,5 +1,22 @@
 <?php
 	
+	/**
+	 * Data Base module.
+	 *
+	 * @link       vitaliipetko.info
+	 * @since      1.0.1
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 */
+
+	/**
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 * @author     Vitalii Petko <vitaliypetko@gmail.com>
+	 */
+
 	function instagram_create_table() {
 
 		global $wpdb;

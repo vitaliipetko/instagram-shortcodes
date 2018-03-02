@@ -1,6 +1,22 @@
 <?php
 	
-	//main function
+	/**
+	 * Core module.
+	 *
+	 * @link       vitaliipetko.info
+	 * @since      1.0.1
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 */
+
+	/**
+	 *
+	 * @package    Instagram
+	 * @subpackage Instagram/module
+	 * @author     Vitalii Petko <vitaliypetko@gmail.com>
+	 */
+
 	function isJSON($string) {
 	    return ((is_string($string) && (is_object(json_decode($string)) || is_array(json_decode($string))))) ? true : false;
 	}
